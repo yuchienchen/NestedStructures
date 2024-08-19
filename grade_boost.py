@@ -14,7 +14,8 @@ def grade_boost(students, letter):
             value = students[key] + 5
             print(value)
     
-    return students
+    print(students)
+
 
 print(grade_boost({
     'Elyse': 5,
