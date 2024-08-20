@@ -3,17 +3,24 @@ def main():
     list_to_dict(friends_lst)
 
 def list_to_dict(friends_lst):
+    num_lst = []
     phone_nums = {}
     for elem in friends_lst:
         if elem.isnumeric():
             print(elem)
-        # if elem.isalpha():
-        #     print(elem)
-            # if elem not in phone_nums.keys():
-            #     phone_nums[elem]
+            if elem.isalpha():
+                break
+            num_lst.append(elem)
+            print(num_lst)
+        
+        if elem.isalpha():
+            # print(elem)
+            name = elem
+            if name not in phone_nums.keys():
+                phone_nums[name] = num_lst
+
+    print(phone_nums)
     
-
-
 
 
 
