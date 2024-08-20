@@ -8,14 +8,18 @@ def get_animal_counts(filename):
             line = line.strip()
             # print(line)
             parts = line.split(': ')
-            name = parts[0]
-            vote = parts[-1]
+            name = str(parts[0]).lower()
+            vote = int(parts[-1])
             # print(name)
             # print(vote)
-            
-            poll[name] = vote
+
+            if name not in poll.keys():
+                poll[name] = vote
+            else:
+                poll[name] += vote
 
     print(poll)
+            
 
 
 
