@@ -28,11 +28,11 @@ def load_data(filename):
             location = str(parts[0].strip())
             lst_infection = parts[1:]
             # print(location)
-            print(lst_infection)
+            # print(lst_infection)
 
             # LIST COMPREHENSION!!!!!!
             int_lst_infection = [int(s.strip()) for s in lst_infection]
-            print(int_lst_infection)
+            # print(int_lst_infection)
 
             if location not in cases.keys():
                 cases[location] = int_lst_infection
@@ -57,7 +57,26 @@ def daily_cases(cumulative):
     >>> daily_cases({'Evermore': [1, 1, 1, 1, 1, 1, 1], 'Vanguard City': [1, 2, 3, 4, 5, 6, 7], 'Excelsior': [1, 1, 2, 3, 5, 8, 13]})
     {'Evermore': [1, 0, 0, 0, 0, 0, 0], 'Vanguard City': [1, 1, 1, 1, 1, 1, 1], 'Excelsior': [1, 0, 1, 1, 2, 3, 5]}
     """
-    pass
+    cases = cumulative
+    new_infection_daily = {}
+
+    for key, value in cases.items():
+        new_daily_lst = []  # Reset the list for each key
+
+        for i in range(len(value)):
+            if i == 0:
+                new_daily = value[0]
+            if i >= 1:
+                new_daily = value[i] - value[i-1]
+            # print(new_daily)
+
+            new_daily_lst.append(new_daily)
+        
+        # if key not in new_infection_daily.keys():
+        new_infection_daily[key] = new_daily_lst    # Store the list of new daily cases in the dictionary for the current key
+        
+    return new_infection_daily
+
     """
     You fill this in.  Don't forget to remove the 'pass' statement above.
     """
