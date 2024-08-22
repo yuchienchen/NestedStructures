@@ -3,6 +3,7 @@ File: biasbarsdata.py
 ------------------
 Add your comments here
 """
+import doctest
 
 KEY_WOMEN = "W"
 KEY_MEN = "M"
@@ -36,7 +37,13 @@ def convert_rating_to_index(rating):
     >>> convert_rating_to_index(5.5)
     2
     """
-    pass
+    if rating < 2.5:
+        bucket_index = 0
+    if 2.5 <= rating <= 3.5:
+        bucket_index = 1
+    if rating > 3.5:
+        bucket_index = 2
+
     """
     You fill this in.  Don't forget to remove the 'pass' statement above.
     """
@@ -99,6 +106,8 @@ def add_data_for_word(word_data, word, gender, rating):
             word_data[word]["M"][1] += 1
         if gender == "M" and rating > 3.5:
             word_data[word]["M"][2] += 1
+
+    doctest.testmod(name='add_data_for_word')
 
     """
     You fill this in.  Don't forget to remove the 'pass' statement above.
