@@ -164,7 +164,15 @@ def search_words(word_data, target):
         matching_words (List[str]): a list of all words from word_data that contain
                                     the target string
     """
-    pass
+    matching_words = []
+    
+    for key in word_data.keys():
+        target = input("Enter a string: ")
+        if target.lower().isalpha() in key:
+            matching_words.append(key)
+
+    return matching_words
+
     """
     You fill this in.  Don't forget to remove the 'pass' statement above.
     """
