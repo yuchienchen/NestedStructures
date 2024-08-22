@@ -133,7 +133,21 @@ def read_file(filename):
     """
     You fill this in.  Don't forget to remove the 'return {}' statement below.
     """
-    return {}
+    word_data = {}
+    with open(filename) as file:
+        line = next(file)
+        print(line)
+        for line in file:
+            line = line.strip()
+            parts = line.split(',')
+            rating = float(parts[0])
+            gender = str(parts[1])
+            comment = parts[-1]
+            word = comment.split(' ')
+
+    add_data_for_word(word_data, word, gender, rating)
+
+    return word_data
 
 
 def search_words(word_data, target):
